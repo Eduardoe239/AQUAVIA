@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aquavia.invalid/schemas/telemetry_event.v1.json",
+  "title": "AQUAVIA telemetry event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","event_id","device_id","sequence","captured_at","clock_synchronized","firmware_version","calibration_version","measurements","quality"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_id": {"type": "string", "format": "uuid"},
+    "device_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "sequence": {"type": "integer", "minimum": 0},
+    "captured_at": {"type": "string", "format": "date-time", "description": "UTC"},
+    "clock_synchronized": {"type": "boolean"},
+    "firmware_version": {"type": "string", "maxLength": 32},
+    "calibration_version": {"type": "integer", "minimum": 1},
+    "measurements": {
+      "type": "object", "additionalProperties": false,
+      "required": ["volume_total_liters","flow_liters_per_minute"],
+      "properties": {
+        "volume_total_liters": {"type": "number", "minimum": 0},
+        "flow_liters_per_minute": {"type": "number", "minimum": 0}
+      }
+    },
+    "quality": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sensor_status","measurement_kind"],
+      "properties": {
+        "sensor_status": {"enum": ["ok","degraded","fault","disconnected"]},
+        "measurement_kind": {"enum": ["measured","estimated","corrected","invalid"]}
+      }
+    }
+  }
+}

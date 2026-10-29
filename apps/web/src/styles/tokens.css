@@ -1,0 +1,8 @@
+:root {
+  --navy: #12385a; --blue: #178dd1; --cyan: #55c5e8;
+  --bg: #f4f7fa; --surface: #ffffff; --text: #203040; --muted: #5b6b78; --border: #d5dee6;
+  --ok: #21865a; --warn: #b7791f; --err: #b83232;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s6: 24px; --s8: 32px;
+  --radius: 12px; --shadow: 0 1px 3px rgba(18, 56, 90, 0.12);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}

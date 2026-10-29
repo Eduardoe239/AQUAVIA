@@ -1,0 +1,1 @@
+{"schema_version":1,"event_id":"7b1c3a52-6f0e-4d0e-9d0a-0f4a1f9c0001","device_id":"dev-sim-0001","sequence":18245,"captured_at":"2026-10-24T11:30:00Z","clock_synchronized":true,"firmware_version":"0.1.0","calibration_version":3,"measurements":{"volume_total_liters":12548.72,"flow_liters_per_minute":4.2},"quality":{"sensor_status":"ok","measurement_kind":"measured"}}

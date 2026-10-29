@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: aquavia
+      POSTGRES_PASSWORD: local_only
+      POSTGRES_DB: aquavia
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aquavia"]
+      interval: 5s
+      retries: 10
+    volumes: [dbdata:/var/lib/postgresql/data]
+  api:
+    build: ../../services/api
+    environment:
+      APP_ENV: development
+      DATABASE_URL: postgresql+psycopg://aquavia:local_only@db:5432/aquavia
+      SECRET_KEY: local-dev-only-not-a-secret
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ["8000:8000"]
+volumes:
+  dbdata:
